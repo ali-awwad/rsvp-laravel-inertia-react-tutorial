@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Contact extends Model
 {
     use HasFactory;
+
+    public function campaigns()
+    {
+        return $this->belongsToMany(Campaign::class)->withPivot('going','not_going','ineretest','notes')->withTimestamps();
+    }
 }

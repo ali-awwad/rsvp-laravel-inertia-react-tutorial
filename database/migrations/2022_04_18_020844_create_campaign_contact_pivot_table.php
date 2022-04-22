@@ -20,7 +20,7 @@ class CreateCampaignContactPivotTable extends Migration
             $table->foreign('contact_id')->references('id')->on('contacts')->onDelete('cascade');
             $table->primary(['campaign_id', 'contact_id']);
             $table->boolean('going')->default(false);
-            $table->boolean('inerested')->default(false);
+            $table->boolean('interested')->default(false);
             $table->boolean('not_going')->default(false);
             $table->text('notes')->nullable();
             $table->timestamps();

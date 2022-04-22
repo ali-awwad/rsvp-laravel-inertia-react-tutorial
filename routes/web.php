@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CampaignController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -15,5 +16,8 @@ use Inertia\Inertia;
 */
 
 Route::get('/', function () {
-    return Inertia::render('Home');
+    abort(403);
 });
+
+Route::get('/campaigns/{campaign:uuid}',[CampaignController::class,'show'])->name('campaigns.show');
+Route::post('/campaigns/{campaign:uuid}',[CampaignController::class,'store'])->name('campaigns.store');

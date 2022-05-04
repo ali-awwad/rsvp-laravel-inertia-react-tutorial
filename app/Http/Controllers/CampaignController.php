@@ -28,7 +28,7 @@ class CampaignController extends Controller
         DB::beginTransaction();
         try {
             $contact = Contact::firstOrNew(['email' => $request->email]);
-            $contact->uuid = Str::uuid();
+            // $contact->uuid = Str::uuid();
             $contact->first_name = $request->first_name;
             $contact->last_name = $request->last_name;
             $contact->company = $request->company;

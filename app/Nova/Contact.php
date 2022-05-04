@@ -3,9 +3,12 @@
 namespace App\Nova;
 
 use Illuminate\Http\Request;
+use Laravel\Nova\Fields\BelongsToMany;
+use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\DateTime;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Text;
+use Laravel\Nova\Fields\Textarea;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
 class Contact extends Resource
@@ -51,6 +54,16 @@ class Contact extends Resource
             Text::make('Email')->hideFromIndex()->rules(['required','email','max:255']),
             DateTime::make('Created at')->exceptOnForms()->hideFromIndex(),
             DateTime::make('Updated at')->exceptOnForms()->hideFromIndex(),
+
+            BelongsToMany::make('Campaigns')->fields(function ()
+            {
+                return [
+                    Boolean::make('Going'),
+                    Boolean::make('Interested'),
+                    Boolean::make('Not Going'),
+                    Textarea::make('Notes'),
+                ];
+            }),
         ];
     }
 
